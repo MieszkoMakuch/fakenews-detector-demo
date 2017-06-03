@@ -1,6 +1,8 @@
 from flask import Flask, request, render_template, redirect, url_for
 from newspaper import Article
 from xml.etree  import ElementTree
+from newspaperdemo.fakenews import check_news
+from newspaperdemo.fakenews import get_domain
 
 app = Flask(__name__)
 
@@ -30,6 +32,9 @@ def show_article():
     article.download()
     article.parse()
 
+    # Fake news
+    domain_aheadoftheherd = get_domain(url_to_clean)
+
     try:
       html_string = ElementTree.tostring(article.clean_top_node)
     except:
@@ -46,7 +51,7 @@ def show_article():
          'title': article.title,
          'text': article.text,
          'top_image': article.top_image,
-         'videos': str(', '.join(article.movies)),
+         'videos': check_news(domain_aheadoftheherd),
          'keywords': str(', '.join(article.keywords)),
          'summary': article.summary
          }
