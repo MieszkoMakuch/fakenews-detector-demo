@@ -1,7 +1,7 @@
 from flask import Flask, request, render_template, redirect, url_for
 from newspaper import Article
 from xml.etree  import ElementTree
-from fakenews_detector.main import get_domain
+from fakenews_detector.url_utils import format_url
 from fakenews_detector.main import check_news
 
 app = Flask(__name__)
@@ -33,7 +33,7 @@ def show_article():
     article.parse()
 
     # Fake news
-    domain_aheadoftheherd = get_domain(url_to_clean)
+    url_aheadoftheherd = format_url(url_to_clean)
 
     try:
       html_string = ElementTree.tostring(article.clean_top_node)
@@ -51,7 +51,7 @@ def show_article():
          'title': article.title,
          'text': article.text,
          'top_image': article.top_image,
-         'videos': check_news(domain_aheadoftheherd),
+         'videos': check_news(url_aheadoftheherd),
          'keywords': str(', '.join(article.keywords)),
          'summary': article.summary
          }
