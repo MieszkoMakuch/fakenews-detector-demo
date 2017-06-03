@@ -1,8 +1,8 @@
 from flask import Flask, request, render_template, redirect, url_for
 from newspaper import Article
 from xml.etree  import ElementTree
-from newspaperdemo.fakenews import check_news
-from newspaperdemo.fakenews import get_domain
+from fakenews_detector.main import get_domain
+from fakenews_detector.main import check_news
 
 app = Flask(__name__)
 
