@@ -1,4 +1,4 @@
-from xml.etree import ElementTree
+
 
 from fakenews_detector.main import info_to_str, check_news
 from fakenews_detector.url_utils import format_url
@@ -7,6 +7,7 @@ from newspaper import Article
 
 # from fakenews_detector.url_utils import format_url
 # from fakenews_detector.main import check_news
+from newspaperdemo.article_analyzer import analyze_article
 
 app = Flask(__name__)
 
@@ -35,31 +36,6 @@ def show_article():
     if not url_to_clean:
         return redirect(url_for('index'))
 
-    article = Article(url_to_clean)
-    article.download()
-    article.parse()
-
     # Fake news
-    formated_url = format_url(url_to_clean)
-
-    try:
-        html_string = ElementTree.tostring(article.clean_top_node)
-    except:
-        html_string = "Error converting html to string."
-
-    try:
-        article.nlp()
-    except:
-        log.error("Couldn't process with NLP")
-
-    a = {
-        'html': html_string,
-        'authors': str(', '.join(article.authors)),
-        'title': article.title,
-        'text': article.text,
-        'top_image': article.top_image,
-        'videos': info_to_str(check_news(formated_url)),
-        'keywords': str(', '.join(article.keywords)),
-        'summary': article.summary
-    }
-    return render_template('article/index.html', article=a, url=url_to_clean)
+    article = analyze_article(url_to_clean, log)
+    return render_template('article/index.html', article=article, url=url_to_clean)
