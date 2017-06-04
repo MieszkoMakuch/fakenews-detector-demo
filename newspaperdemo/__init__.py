@@ -1,26 +1,33 @@
+from xml.etree import ElementTree
+
+from fakenews_detector.main import info_to_str, check_news
+from fakenews_detector.url_utils import format_url
 from flask import Flask, request, render_template, redirect, url_for
 from newspaper import Article
-from xml.etree  import ElementTree
-from fakenews_detector.url_utils import format_url
-from fakenews_detector.main import check_news
+
+# from fakenews_detector.url_utils import format_url
+# from fakenews_detector.main import check_news
 
 app = Flask(__name__)
 
 # Debug logging
 import logging
 import sys
+
 # Defaults to stdout
 logging.basicConfig(level=logging.INFO)
 log = logging.getLogger(__name__)
-try: 
+try:
     log.info('Logging to console')
 except:
     _, ex, _ = sys.exc_info()
     log.error(ex.message)
 
+
 @app.route('/')
 def index():
     return render_template('index.html')
+
 
 @app.route('/articles/show')
 def show_article():
@@ -33,27 +40,26 @@ def show_article():
     article.parse()
 
     # Fake news
-    url_aheadoftheherd = format_url(url_to_clean)
+    formated_url = format_url(url_to_clean)
 
     try:
-      html_string = ElementTree.tostring(article.clean_top_node)
+        html_string = ElementTree.tostring(article.clean_top_node)
     except:
-      html_string = "Error converting html to string."
+        html_string = "Error converting html to string."
 
     try:
-      article.nlp()
+        article.nlp()
     except:
-      log.error("Couldn't process with NLP")
+        log.error("Couldn't process with NLP")
 
     a = {
-          'html': html_string, 
-         'authors': str(', '.join(article.authors)), 
-         'title': article.title,
-         'text': article.text,
-         'top_image': article.top_image,
-         'videos': check_news(url_aheadoftheherd),
-         'keywords': str(', '.join(article.keywords)),
-         'summary': article.summary
-         }
+        'html': html_string,
+        'authors': str(', '.join(article.authors)),
+        'title': article.title,
+        'text': article.text,
+        'top_image': article.top_image,
+        'videos': info_to_str(check_news(formated_url)),
+        'keywords': str(', '.join(article.keywords)),
+        'summary': article.summary
+    }
     return render_template('article/index.html', article=a, url=url_to_clean)
-    
