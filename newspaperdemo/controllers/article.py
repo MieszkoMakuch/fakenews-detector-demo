@@ -1,6 +1,7 @@
-from flask import Blueprint, render_template, request
+from flask import Blueprint, render_template
 
 mod = Blueprint('article', __name__)
+
 
 @mod.route('/article')
 def index():

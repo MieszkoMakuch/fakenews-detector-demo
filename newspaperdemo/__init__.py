@@ -1,9 +1,4 @@
-
-
-from fakenews_detector.main import info_to_str, check_news
-from fakenews_detector.url_utils import format_url
 from flask import Flask, request, render_template, redirect, url_for
-from newspaper import Article
 
 # from fakenews_detector.url_utils import format_url
 # from fakenews_detector.main import check_news

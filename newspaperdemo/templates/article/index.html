@@ -15,7 +15,7 @@
             </div>
             <div class="notify-description">
                 <p><b>Analysis based on:</b> {{ article.source }}</p>
-                <p><b>Source notes:</b> {{ article.source_notes }}</p>
+                <p><b>Notes:</b> {{ article.source_notes }}</p>
             </div>
         </div>
         <head>
@@ -24,8 +24,9 @@
             <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
         </head>
 
-        <h2 style="padding: 0px 65px">About article:</h2>
-        <button type="button" style="margin: 0px 65px 20px" class="btn btn-default" data-toggle="collapse" data-target="#table-collapse">
+        <h2 style="padding: 0px 0">About article:</h2>
+        <button type="button" style="margin: 0px 0px 20px" class="btn btn-default" data-toggle="collapse"
+                data-target="#table-collapse">
             Show extracted information
         </button>
         <div id="table-collapse" class="table-responsive collapse">
