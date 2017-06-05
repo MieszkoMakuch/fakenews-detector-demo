@@ -1,5 +1,7 @@
-from newspaperdemo import app
-from newspaperdemo.controllers import article
+from fakenews_detector_demo import app
+from fakenews_detector_demo.controllers import article
+
+# update herokou git push heroku master
 
 if __name__ == '__main__':
     app.register_blueprint(article.mod)

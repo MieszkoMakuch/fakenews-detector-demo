@@ -2,7 +2,7 @@ from flask import Flask, request, render_template, redirect, url_for
 
 # from fakenews_detector.url_utils import format_url
 # from fakenews_detector.main import check_news
-from newspaperdemo.article_analyzer import analyze_article
+from fakenews_detector_demo.article_analyzer import analyze_article
 
 app = Flask(__name__)
 
