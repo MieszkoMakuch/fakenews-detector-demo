@@ -1,7 +1,5 @@
-### Newspaper Demo
+# Fake news detector demo
 
-Demo of the [Newspaper](https://github.com/codelucas/newspaper) article extraction library.
+Demo of my **Fake news detector** python package. Check out github repository: [Fake news detector](https://github.com/MieszkoMakuch/fakenews-detector) 
 
-Visit [http://newspaper-demo.herokuapp.com](http://newspaper-demo.herokuapp.com) for the demo.
-
-Originally authored by [Rob Phillips](https://github.com/iwasrobbed)
+Visit [Fake news detector online](https://protected-inlet-79294.herokuapp.com/) for the demo.
