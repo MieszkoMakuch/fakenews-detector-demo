@@ -2,6 +2,8 @@
 
 Demo of my **Fake news detector** python package. 
 
+**Fake news detector** is article and domain analyzer written in python 3 to help user detect fake news content.
+
 Visit [https://protected-inlet-79294.herokuapp.com/](https://protected-inlet-79294.herokuapp.com/) for the demo.
 
 Check out github repository: [fakenews-detector](https://github.com/MieszkoMakuch/fakenews-detector) 
