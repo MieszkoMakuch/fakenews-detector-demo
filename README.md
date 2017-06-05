@@ -1,10 +1,10 @@
 # Fake news detector demo
 
-### Demo of my **Fake news detector** python package. 
+Demo of my **Fake news detector** python package. 
 
-##### Visit [https://protected-inlet-79294.herokuapp.com/](https://protected-inlet-79294.herokuapp.com/) for the demo.
+Visit [https://protected-inlet-79294.herokuapp.com/](https://protected-inlet-79294.herokuapp.com/) for the demo.
 
-##### Check out github repository: [fakenews-detector](https://github.com/MieszkoMakuch/fakenews-detector) 
+Check out github repository: [fakenews-detector](https://github.com/MieszkoMakuch/fakenews-detector) 
 
 ## Example urls
 You can paste this example urls and see the results.
