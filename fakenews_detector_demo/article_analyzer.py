@@ -34,7 +34,7 @@ def source_notes_to_str(source_notes):
 def analyze_article(url, log):
     try:
         analysis_list = check_news(url)
-    except ValueError as err:
+    except Exception as err:
         article_analyse = {
             'verdict': 'Cannot perform analysis',
             'description': str(err),
